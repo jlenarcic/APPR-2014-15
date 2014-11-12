@@ -6,8 +6,16 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2014/15.
 
 ## Tematika
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal. Tukaj boste
-napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+V mojem projektu se bom ukvarjal s podrobno analizo posameznih regij znotraj Slovenije. Predvsem se bom osredotočil na gospodarsko razvitost regij, torej regionalni BDP na prebivalca, stopnja brezposelnosti oz. zaposlenosti, povprečna plača, število podjetij znotraj regije, prometna povezanost in transport, delovne migracije, raven izobrazbe. Zanimala me bo tudi gostota poseljenosti, kriminaliteta, pa tudi skrb za okolje oz. onesnaženost.
+
+Vse te podatke bom nato skrbno analiziral in ugotavljal v kolikšni meri se med seboj prepletajo(npr. ali je stopnja kriminalitete odvisna od stopnje brezposelnosti). Moj cilj je prav tako, da ugotovim, katere regije spadajo med najbolj razvite, katere se najhitreje razvijajo in podobno. 
+
+Vse podatke za moj projekt bom dobil iz spletne strani Statističnega urada Republike Slovenije.
+http://www.stat.si/
+
+
+
+
 
 ## Program
 
