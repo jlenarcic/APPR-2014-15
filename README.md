@@ -6,9 +6,9 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2014/15.
 
 ## Tematika
 
-V mojem projektu se bom ukvarjal s podrobno analizo posameznih regij znotraj Slovenije. Predvsem se bom osredotočil na gospodarsko razvitost regij, torej regionalni BDP na prebivalca, stopnja brezposelnosti, povprečna plača, število podjetij znotraj regije, prometna povezanost, migracije prebivalcev, raven izobrazbe. Zanimala me bo tudi gostota poseljenosti in kriminaliteta.
+V mojem projektu se bom ukvarjal s podrobno analizo posameznih regij znotraj Slovenije. Predvsem se bom osredotočil na gospodarsko razvitost regij, torej regionalni BDP na prebivalca, stopnja brezposelnosti, povprečna plača, število podjetij znotraj regije, prometna povezanost, raven izobrazbe. Zanimala me bo tudi gostota poseljenosti in kriminaliteta.
 
-Vse te podatke bom nato skrbno analiziral in ugotavljal v kolikšni meri se med seboj prepletajo (npr. ali je stopnja kriminalitete odvisna od stopnje brezposelnosti). Moj cilj je prav tako, da ugotovim, katere regije spadajo med najbolj razvite, katere se najhitreje razvijajo in podobno. Vzel bom interval nekaj let (npr. od vstopa Slovenije v EU do danes) in pogledal, kakšni so trendi pri posameznih spremenljivkah glede na regijo. 
+Vse te podatke bom nato skrbno analiziral in ugotavljal v kolikšni meri se med seboj prepletajo (npr. ali je stopnja kriminalitete odvisna od stopnje brezposelnosti). Moj cilj je prav tako, da ugotovim, katere regije spadajo med najbolj razvite, katere se najhitreje razvijajo, katere so nad oz. pod slovenskim povprečjem glede BDP na prebivalca. Kar se tiče razvoja skozi čas bom vzel interval nekaj let (npr. od vstopa Slovenije v EU do danes) in pogledal, kakšni so trendi pri posameznih spremenljivkah.
 
 Vse podatke za moj projekt bom dobil iz spletne strani Statističnega urada Republike Slovenije.
 Podatki po statističnih regijah (http://pxweb.stat.si/pxweb/Database/Regije/Regije.asp).
