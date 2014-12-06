@@ -6,15 +6,15 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2014/15.
 
 ## Tematika
 
-V mojem projektu se bom ukvarjal s podrobno analizo posameznih regij znotraj Slovenije. Predvsem se bom osredotočil na gospodarsko razvitost regij, torej regionalni BDP na prebivalca, stopnja brezposelnosti, povprečna plača, število podjetij znotraj regije, prometna povezanost, raven izobrazbe. Zanimala me bo tudi gostota poseljenosti in kriminaliteta.
+V mojem projektu se bom ukvarjal s podrobno analizo NBA ekip v sezoni 2013/2014. Za vsako ekipo me bo zanimalo število zmag in porazov, povprečno število košev na tekmo in druge spremenljivke. Nekatere bom dodal sam (npr. ali je igralec v moštvu dober strelec; kriterij za dobrega strelca pa bo recimo več kot 20 točk na tekmo). Primerjal bom dve statistični spremenljivki, in sicer povprečno število košev na tekmo in število zmag. Podatke za vsako ekipo bom primerjal s podatki za ostale ekipe in na podlagi tega sklepal, ali je ekipa svoj uspeh gradila na čvrsti obrambi ali na zaneslivem napadu. Na podlagi vsake statistične spremenljivke bom ekipe razvrstil od najboljše do najslabše, nato pa bom ugotavljal, katere pozitivno vplivajo na njihovo uspešnost.
+Prav tako bom uvozil še eno podobno tabelo. Razlikovala pa se bo v tem, da bodo na tej le podatki za tekme v gosteh. Ti dve tabeli bom med seboj primerjal, saj me bo zanimalo, v kakšni meri vpliva kraj tekme (doma, v gosteh) na uspešnost ekipe.
+V drugem delu projekta pa se bom osredotočil na NBA ekipo Phoenix Suns. Zanimali me bosta predvsem dve spremenljivki, in sicer strelska uspešnost in povprečnen čas, ki ga igralec preživi na parketu. Ti dve   spremenljivki mi bosta v pomoč pri ugotavljanju, kateri izmed igralcev je bil najučinkovitejši glede na minutažo.
+Cilj projekta je analiziranje in obdelava podatkov na konkretnem primeru S programom R ter pridobitev novih znanj na področju statistične obdelave podatkov.
 
-Vse te podatke bom nato skrbno analiziral in ugotavljal v kolikšni meri se med seboj prepletajo (npr. ali je stopnja kriminalitete odvisna od stopnje brezposelnosti). Moj cilj je prav tako, da ugotovim, katere regije spadajo med najbolj razvite, katere se najhitreje razvijajo, katere so nad oz. pod slovenskim povprečjem glede BDP na prebivalca. Kar se tiče razvoja skozi čas bom vzel interval nekaj let (npr. od vstopa Slovenije v EU do danes) in pogledal, kakšni so trendi pri posameznih spremenljivkah.
-
-Vse podatke za moj projekt bom dobil iz spletne strani Statističnega urada Republike Slovenije.
-Podatki po statističnih regijah (http://pxweb.stat.si/pxweb/Database/Regije/Regije.asp).
-
-
-
+Vse podatke za moj projekt bom pridobil iz naslednjih spletnih strani:
+http://stats.nba.com/league/team/#!/?Season=2013-14
+http://stats.nba.com/league/team/#!/?Season=2013-14&Location=Road
+http://stats.nba.com/team/#!/1610612756/players/?Season=2013-14
 
 
 

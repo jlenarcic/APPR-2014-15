@@ -20,6 +20,7 @@ uvoziNBA1 <- function() {
 }
 cat("Uvažam podatke o vseh ekipah... \n")
 NBA1 <- uvoziNBA1()
+View(NBA1)
 
 #DODATEN STOLPEC(Ali so ekipe igrale podaljšek - OT)
 attach(NBA1)
@@ -44,6 +45,7 @@ uvoziNbaRoadSeason <- function() {
 }
 cat("Uvažam podatke o ekipah, ki so se uvrstile v končnico... \n")
 NbaRoadSeason <- uvoziNbaRoadSeason()
+View(NbaRoadSeason)
 
 #TABELA 3 (Podatki za igralce ekipe Phoenix Suns v tekmovalnem letu 2013/2014)
 uvoziphoenix <- function() {
