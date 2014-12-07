@@ -20,7 +20,7 @@ uvoziNBA1 <- function() {
 }
 cat("Uvažam podatke o vseh ekipah... \n")
 NBA1 <- uvoziNBA1()
-View(NBA1)
+
 
 #DODATEN STOLPEC(Ali so ekipe igrale podaljšek - OT)
 attach(NBA1)
@@ -55,7 +55,7 @@ uvoziphoenix <- function() {
 }
 cat("Uvažam podatke o igralcih ekipe Phoenix Suns za sezono 13/14... \n")
 phoenix <- uvoziphoenix()
-View(phoenix)
+
 
 #DODATEK (Stolpec strelske učinkovitosti za igralce ekipe Phoenix Suns)
 attach(phoenix)
