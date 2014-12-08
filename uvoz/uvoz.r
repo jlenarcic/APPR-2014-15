@@ -21,7 +21,10 @@ uvoziNBA1 <- function() {
 }
 cat("Uvažam podatke o vseh ekipah... \n")
 NBA1 <- uvoziNBA1()
-
+colnames(NBA1) <- c("GP","W","L","W%","MIN","FGM","FGA","FG%",
+                    "3PM","3PA","3P%","FTM","FTA","FT%","OREB",
+                    "DREB","REB","AST","TOV","STL","BLK","BLKA",
+                    "PFC","PFD","PTS","+/-")
 
 #DODATEN STOLPEC(Razvrstil sem ekipe glede na število zmag v 4 kategorije)
 attach(NBA1)
@@ -44,7 +47,11 @@ uvoziNbaRoadSeason <- function() {
 }
 cat("Uvažam podatke o ekipah, ki so se uvrstile v končnico... \n")
 NbaRoadSeason <- uvoziNbaRoadSeason()
-View(NbaRoadSeason)
+colnames(NbaRoadSeason) <- c("GP","W","L","W%","MIN","FGM","FGA","FG%",
+                    "3PM","3PA","3P%","FTM","FTA","FT%","OREB",
+                    "DREB","REB","AST","TOV","STL","BLK","BLKA",
+                    "PFC","PFD","PTS","+/-")
+
 
 #TABELA 3 (Podatki za igralce ekipe Phoenix Suns v tekmovalnem letu 2013/2014)
 uvoziphoenix <- function() {
@@ -55,7 +62,10 @@ uvoziphoenix <- function() {
 }
 cat("Uvažam podatke o igralcih ekipe Phoenix Suns za sezono 13/14... \n")
 phoenix <- uvoziphoenix()
-
+colnames(phoenix) <- c("GP","MIN","FGM","FGA","FG%",
+                    "3PM","3PA","3P%","FTM","FTA","FT%","OREB",
+                    "DREB","REB","AST","TOV","STL","BLK",
+                    "PFC","PTS","+/-")
 
 #DODATEK1 (Stolpec strelske učinkovitosti za igralce ekipe Phoenix Suns)
 attach(phoenix)
