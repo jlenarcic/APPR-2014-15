@@ -23,7 +23,7 @@ cat("Uvažam podatke o vseh ekipah... \n")
 NBA1 <- uvoziNBA1()
 
 
-#DODATEN STOLPEC(Ali so ekipe igrale podaljšek - OT)
+#DODATEN STOLPEC(Razvrstil sem ekipe glede na število zmag v 4 kategorije)
 attach(NBA1)
 moznosti <- c("Dobra ekipa", "Povprečna ekipa", "Slaba ekipa", "Zelo slaba ekipa", "Zelo dobra ekipa")
 stolpec <- character(nrow(NBA1))
