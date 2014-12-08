@@ -25,13 +25,16 @@ NBA1 <- uvoziNBA1()
 
 #DODATEN STOLPEC(Ali so ekipe igrale podaljšek - OT)
 attach(NBA1)
-moznosti <- c("Da", "Ne")
-OT1 <- character(nrow(NBA1))
-OT1[MIN <= 48 ] <- "Ne"
-OT1[MIN > 48] <- "Da"
-OT <- factor(OT1, levels = moznosti, ordered = TRUE)
+moznosti <- c("Dobra ekipa", "Povprečna ekipa", "Slaba ekipa", "Zelo slaba ekipa", "Zelo dobra ekipa")
+stolpec <- character(nrow(NBA1))
+stolpec[W > 58] <- "Zelo dobra ekipa"
+stolpec[W <= 50 & W > 35] <- "Povprečna ekipa"
+stolpec[W > 50 & W <= 58] <- "Dobra ekipa"
+stolpec[W > 20 & W <= 35] <- "Slaba ekipa"
+stolpec[W <= 20] <- "Zelo slaba ekipa"
+Status <- factor(stolpec, levels = moznosti, ordered = TRUE)
 detach(NBA1)
-NBA <- data.frame(NBA1, OT)
+NBA <- data.frame(NBA1, Status)
 
 #TABELA 2 (Statistični podatki za vse ekipe v sezoni 13/14, ko so le te igrale v gosteh)
 uvoziNbaRoadSeason <- function() {
