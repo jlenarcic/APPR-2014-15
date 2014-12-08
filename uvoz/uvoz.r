@@ -16,6 +16,7 @@
 uvoziNBA1 <- function() {
   return(read.table("podatki/NBA1.csv", sep = ";", as.is = TRUE,
                     header = TRUE,
+                    row.names = 1,
                     fileEncoding = "Windows-1250"))
 }
 cat("Uvažam podatke o vseh ekipah... \n")
@@ -30,12 +31,7 @@ OT1[MIN <= 48 ] <- "Ne"
 OT1[MIN > 48] <- "Da"
 OT <- factor(OT1, levels = moznosti, ordered = TRUE)
 detach(NBA1)
-dodatenstolpec <- data.frame(OT)
-NBA <- merge(NBA1, dodatenstolpec, by = 0, all = TRUE)
-NBA <- NBA[-1]
-rownames(NBA) <- NULL
-View(NBA)
-
+NBA <- data.frame(NBA1, OT)
 
 #TABELA 2 (Statistični podatki za vse ekipe v sezoni 13/14, ko so le te igrale v gosteh)
 uvoziNbaRoadSeason <- function() {
@@ -51,13 +47,14 @@ View(NbaRoadSeason)
 uvoziphoenix <- function() {
   return(read.table("podatki/phoenix.csv", sep = ";", as.is = TRUE,
                     header = TRUE,
+                    row.names = 1,
                     fileEncoding = "Windows-1250"))
 }
 cat("Uvažam podatke o igralcih ekipe Phoenix Suns za sezono 13/14... \n")
 phoenix <- uvoziphoenix()
 
 
-#DODATEK (Stolpec strelske učinkovitosti za igralce ekipe Phoenix Suns)
+#DODATEK1 (Stolpec strelske učinkovitosti za igralce ekipe Phoenix Suns)
 attach(phoenix)
 moznosti <- c("Dober strelec", "Srednje dober strelec", "Slab strelec")
 PHXtocke <- character(nrow(phoenix))
@@ -66,11 +63,18 @@ PHXtocke[PTS >= 5 & PTS < 15] <- "Srednje dober strelec"
 PHXtocke[PTS < 5] <- "Slab strelec"
 Natancnost <- factor(PHXtocke, levels = moznosti, ordered = TRUE)
 detach(phoenix)
-dodatenstolpec <- data.frame(Natancnost)
-PHOENIX <- merge(phoenix, dodatenstolpec, by = 0, all = TRUE)
-PHOENIX <- PHOENIX[-1]
-rownames(PHOENIX) <- NULL
-View(PHOENIX)
+PHOENIX <- data.frame(phoenix, Natancnost)
+
+#DODATEK2 (Stolpec s  podatki o igralnem mestu za posameznega igralca)
+uvozipositions <- function() {
+  return(read.table("podatki/positions.csv", sep = ";", as.is = TRUE,
+                    header = TRUE,
+                    fileEncoding = "Windows-1250"))
+}
+cat("Uvažam podatke o pozicijah... \n")
+positions <- uvozipositions()
+
+PHOENIX1 <- data.frame(phoenix, positions)
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
