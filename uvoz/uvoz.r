@@ -26,7 +26,7 @@ colnames(NBA1) <- c("GP","W","L","W%","MIN","FGM","FGA","FG%",
                     "DREB","REB","AST","TOV","STL","BLK","BLKA",
                     "PFC","PFD","PTS","+/-")
 
-#DODATEN STOLPEC(Razvrstil sem ekipe glede na število zmag v 4 kategorije)
+#DODATEN STOLPEC 1 (Razvrstil sem ekipe glede na število zmag v 4 kategorije)
 attach(NBA1)
 moznosti <- c("Dobra ekipa", "Povprečna ekipa", "Slaba ekipa", "Zelo slaba ekipa", "Zelo dobra ekipa")
 stolpec <- character(nrow(NBA1))
@@ -38,6 +38,17 @@ stolpec[W <= 20] <- "Zelo slaba ekipa"
 Status <- factor(stolpec, levels = moznosti, ordered = TRUE)
 detach(NBA1)
 NBA <- data.frame(NBA1, Status)
+
+#DODATEN STOLPEC 2 (Zvezne države)
+uvozidrzave <- function() {
+  return(read.table("podatki/usstates.csv", sep = ";", as.is = TRUE,
+                    header = TRUE,
+                    fileEncoding = "Windows-1250"))
+}
+cat("Uvažam podatke o zveznih drzavah... \n")
+drzave <- uvozidrzave()
+
+NBASTATES <- data.frame(NBA, drzave)
 
 #TABELA 2 (Statistični podatki za vse ekipe v sezoni 13/14, ko so le te igrale v gosteh)
 uvoziNbaRoadSeason <- function() {
@@ -88,6 +99,15 @@ cat("Uvažam podatke o pozicijah... \n")
 positions <- uvozipositions()
 
 PHOENIX1 <- data.frame(phoenix, positions)
+
+#DODATNA TABELA - KOORDINATE AMERIŠKIH MEST (koordinate ameriških mest, kjer se igra liga NBA)
+uvozinbacities <- function() {
+  return(read.table("podatki/nbacities.csv", sep = ",", as.is = TRUE,
+                    header = TRUE,
+                    fileEncoding = "Windows-1250"))
+}
+cat("Uvažam podatke o mestih... \n")
+nbacities <- uvozinbacities()
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
