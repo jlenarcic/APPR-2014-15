@@ -80,11 +80,6 @@ nocemo <- c("Alaska", "Hawaii", "Puerto Rico", "U.S. Virgin Islands")
 contiguous.states <- USA[!(USA$NAME_1 %in% nocemo),]
 contiguous.states$NAME_1 <- factor(contiguous.states$NAME_1)
 
-#Izbira barv za zvezne države
-#barve <- rainbow(49)[contiguous.states$STATE]
-
-#plot(contiguous.states, col = barve[contiguous.states$STATE])
-
 # Narišimo zemljevid v PDF.
 cat("Rišem zemljevid...\n")
 pdf("slike/USA.pdf")
@@ -96,17 +91,16 @@ points(coordinates(nbacities[c("long", "lat")]),
        cex = ifelse(sanantonio, 0.8, 0.6),
        col = ifelse(sanantonio, "gold", "orange"))
 
-#Spremenjene koordinate in imena za Slovenijo
+#Spremenjene koordinate in imena za ameriška mesta
 koordinate <- coordinates(nbacities[c("long", "lat")])
 imena <- as.character(nbacities$capital)
 rownames(koordinate) <- imena
 names(imena) <- imena
-koordinate["Sacramento",1] <- koordinate["Sacramento",1] + 1.5 #levo,desno
+koordinate["Sacramento",1] <- koordinate["Sacramento",1] + 1.5
 koordinate["Golden State",1] <- koordinate["Golden State",1] + 0.5
-
 koordinate["San Antonio",1] <- koordinate["San Antonio",1] - 1.4
 koordinate["Miami",1] <- koordinate["Miami",1] + 1
-koordinate["New Orleans",2] <- koordinate["New Orleans",2] - 0.6 #gor,dol
+koordinate["New Orleans",2] <- koordinate["New Orleans",2] - 0.6
 koordinate["New Orleans",1] <- koordinate["New Orleans",1] + 0.3
 koordinate["Washington",1] <- koordinate["Washington",1] -1.3
 koordinate["Philadelphia",1] <- koordinate["Philadelphia",1] + 1.7
