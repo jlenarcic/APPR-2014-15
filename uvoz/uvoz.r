@@ -100,6 +100,17 @@ positions <- uvozipositions()
 
 PHOENIX1 <- data.frame(phoenix, positions)
 
+#DODATEK3 (Stolpec s  podatki o igralnem mestu za posameznega igralca)
+uvozinationality <- function() {
+  return(read.table("podatki/nationality.csv", sep = ";", as.is = TRUE,
+                    header = TRUE,
+                    fileEncoding = "Windows-1250"))
+}
+cat("Uvažam podatke o pozicijah... \n")
+nationality <- uvozinationality()
+
+PHOENIX2 <- data.frame(PHOENIX1, nationality)
+
 #DODATNA TABELA - KOORDINATE AMERIŠKIH MEST (koordinate ameriških mest, kjer se igra liga NBA)
 uvozinbacities <- function() {
   return(read.table("podatki/nbacities.csv", sep = ",", as.is = TRUE,
@@ -108,6 +119,17 @@ uvozinbacities <- function() {
 }
 cat("Uvažam podatke o mestih... \n")
 nbacities <- uvozinbacities()
+
+#DODATNA TABELA 2
+uvozizmage <- function() {
+  return(read.table("podatki/zmage2.csv", sep = ";", as.is = TRUE,
+                    header = TRUE,
+                    row.names = 1,
+                    fileEncoding = "Windows-1250"))
+}
+cat("Uvažam podatke o zmagah... \n")
+zmage <- uvozizmage()
+
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
