@@ -130,6 +130,45 @@ uvozizmage <- function() {
 cat("Uvažam podatke o zmagah... \n")
 zmage <- uvozizmage()
 
+#Podatki, ki jih potrebujem v tretji fazi (za divizije)
+uvozipodatke <- function() {
+  return(read.table("podatki/uscapitals.csv", sep = ",", as.is = TRUE,
+                    header = TRUE,
+                    row.names = 1,
+                    fileEncoding = "Windows-1250"))
+}
+cat("Uvažam podatke... \n")
+usa3 <- uvozipodatke()
+
+attach(usa3)
+divizije <- c("Atlantic", "Central", "Southeast", "Northwest", "Pacific", "Southwest")
+div1 <- character(nrow(usa3))
+div1[rownames(usa3) == "Massachusetts"] <- "Atlantic"
+div1[rownames(usa3) == "Pennsylvania"] <- "Atlantic"
+div1[rownames(usa3) == "New York"] <- "Atlantic"
+div1[rownames(usa3) == "Illinois"] <- "Central"
+div1[rownames(usa3) == "Ohio"] <- "Central"
+div1[rownames(usa3) == "Wisconsin"] <- "Central"
+div1[rownames(usa3) == "Indiana"] <- "Central"
+div1[rownames(usa3) == "Michigan"] <- "Central"
+div1[rownames(usa3) == "Georgia"] <- "Southeast"
+div1[rownames(usa3) == "District of Columbia"] <- "Southeast"
+div1[rownames(usa3) == "Florida"] <- "Southeast"
+div1[rownames(usa3) == "North Carolina"] <- "Southeast"
+div1[rownames(usa3) == "Oregon"] <- "Northwest"
+div1[rownames(usa3) == "Oklahoma"] <- "Northwest"
+div1[rownames(usa3) == "Colorado"] <- "Northwest"
+div1[rownames(usa3) == "Utah"] <- "Northwest"
+div1[rownames(usa3) == "Minnesota"] <- "Northwest"
+div1[rownames(usa3) == "California"] <- "Pacific"
+div1[rownames(usa3) == "Arizona"] <- "Pacific"
+div1[rownames(usa3) == "Texas"] <- "Southwest"
+div1[rownames(usa3) == "Louisiana"] <- "Southwest"
+div1[rownames(usa3) == "Tennessee"] <- "Southwest"
+conference <- factor(div1, levels = divizije, ordered = TRUE)
+detach(usa3)
+
+usa4 <- data.frame(usa3, conference)
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo

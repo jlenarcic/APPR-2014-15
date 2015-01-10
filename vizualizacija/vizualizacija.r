@@ -1,52 +1,5 @@
 # # 3. faza: Izdelava zemljevida
-# 
-# # Uvozimo funkcijo za pobiranje in uvoz zemljevida.
-# source("lib/uvozi.zemljevid.r")
-# 
-# # Uvozimo zemljevid.
-# cat("Uvažam zemljevid...\n")
-# obcine <- uvozi.zemljevid("http://e-prostor.gov.si/fileadmin/BREZPLACNI_POD/RPE/OB.zip",
-#                           "obcine", "OB/OB.shp", mapa = "zemljevid",
-#                           encoding = "Windows-1250")
-# 
-# # Funkcija, ki podatke preuredi glede na vrstni red v zemljevidu
-# preuredi <- function(podatki, zemljevid) {
-#   nove.obcine <- c()
-#   manjkajo <- ! nove.obcine %in% rownames(podatki)
-#   M <- as.data.frame(matrix(nrow=sum(manjkajo), ncol=length(podatki)))
-#   names(M) <- names(podatki)
-#   row.names(M) <- nove.obcine[manjkajo]
-#   podatki <- rbind(podatki, M)
-#   
-#   out <- data.frame(podatki[order(rownames(podatki)), ])[rank(levels(zemljevid$OB_UIME)[rank(zemljevid$OB_UIME)]), ]
-#   if (ncol(podatki) == 1) {
-#     out <- data.frame(out)
-#     names(out) <- names(podatki)
-#     rownames(out) <- rownames(podatki)
-#   }
-#   return(out)
-# }
-# 
-# # Preuredimo podatke, da jih bomo lahko izrisali na zemljevid.
-# druzine <- preuredi(druzine, obcine)
-# 
-# # Izračunamo povprečno velikost družine.
-# druzine$povprecje <- apply(druzine[1:4], 1, function(x) sum(x*(1:4))/sum(x))
-# min.povprecje <- min(druzine$povprecje, na.rm=TRUE)
-# max.povprecje <- max(druzine$povprecje, na.rm=TRUE)
-# 
-# # Narišimo zemljevid v PDF.
-# cat("Rišem zemljevid...\n")
-# pdf("slike/povprecna_druzina.pdf", width=6, height=4)
-# 
-# n = 100
-# barve = topo.colors(n)[1+(n-1)*(druzine$povprecje-min.povprecje)/(max.povprecje-min.povprecje)]
-# plot(obcine, col = barve)
-# 
-# dev.off()
-
-###########################
-
+ 
 # Uvozimo funkcijo za pobiranje in uvoz zemljevida.
 source("lib/uvozi.zemljevid.r")
 
@@ -75,6 +28,8 @@ preuredi <- function(podatki, zemljevid) {
   return(out)
 }
 
+# ZEMLJEVID 1 (Na njem so grafično prikazana mesta, v katerih se igra liga NBA)
+
 #Hočemo dobiti le sklenjeni del ZDA, brez teritorialnih območij po svetu, ki so v lasti ZDA
 nocemo <- c("Alaska", "Hawaii", "Puerto Rico", "U.S. Virgin Islands")
 usa.states <- USA[!(USA$NAME_1 %in% nocemo),]
@@ -82,9 +37,22 @@ usa.states$NAME_1 <- factor(usa.states$NAME_1)
 
 # Narišimo zemljevid v PDF.
 cat("Rišem zemljevid...\n")
-pdf("slike/USA.pdf")
+pdf("slike/USAcities.pdf")
 
-plot(usa.states)
+plot(usa.states, col = ifelse(usa4[as.character(usa.states$NAME_1),
+                                   "conference"] == "Atlantic", "lightpink1",
+                              ifelse(usa4[as.character(usa.states$NAME_1),
+                                          "conference"]== "Central","lightskyblue2",
+                                     ifelse(usa4[as.character(usa.states$NAME_1),
+                                                 "conference"] == "Southeast", "lightsteelblue4",
+                                            ifelse(usa4[as.character(usa.states$NAME_1),
+                                                        "conference"] == "Northwest", "lightcyan3",
+                                                   ifelse(usa4[as.character(usa.states$NAME_1),
+                                                               "conference"] == "Pacific", "lightcoral",
+                                                          ifelse(usa4[as.character(usa.states$NAME_1),
+                                                                      "conference"] == "Southwest", "lightgoldenrod","white")))))))
+
+title("Mesta, kjer se igra liga NBA")
 sanantonio <- nbacities$capital =="San Antonio" #Zmagovalna ekipa sezone 13/14
 points(coordinates(nbacities[c("long", "lat")]),
        pch = ifelse(sanantonio, 19, 19),
@@ -113,59 +81,27 @@ koordinate["Boston",2] <- koordinate["Boston",2] + 1.4
 imena["Los Angeles"] <- "Los\nAngeles"
 imena["San Antonio"] <- "San\nAntonio"
 
-text(koordinate,labels=imena,cex=0.6, pos = 1, offset = 0.2,col = "grey")
+text(koordinate,labels=imena,cex=0.6, pos = 1, offset = 0.2,col = "black")
 
 dev.off()
 
-# usstates <- c(nbacities$state)
-# stevilo <- NBA$W
-# stevilo <- stevilo[order(stevilo)]
-# barve <- rgb(0, 1, 0, match(usstates, stevilo)/length(usstates))
-# names(barve) <- names(drzave)
-# plot(USA, col = barve[as.character(USA$STATE_1)])
+# ZEMLJEVID 2 (Podatki o domačih in gostujočih zmagah po zveznih državah. Bolj obarvana območja
+# so bila bolj uspešna v tekmovalni sezoni 13/14 in obratno.)
 
-
-#zemljevid 2 
-# Narišimo zemljevid v PDF.
-cat("Rišem zemljevid...\n")
-pdf("slike/USAwin.pdf")
-
+zmage <- preuredi(zmage, usa.states)
 usa.states$WHOME <- zmage$WHOME
 usa.states$WAWAY <- zmage$WAWAY
 
+# Narišimo zemljevid v PDF.
+cat("Rišem zemljevid2...\n")
+pdf("slike/USAstats.pdf")
+
 k <- 2 #faktor povečave - da bo dovolj barv
-max.homewin <- k*max(usa.states$WHOME)
-max.awaywin <- k*max(usa.states$WAWAY)
-barve <- heat.colors(max.homewin)[max.homewin:1]
-print(spplot(usa.states, "WHOME", col.regions = barve))
-print(spplot(usa.states, "WAWAY", col.regions =
-               barve[1:max.awaywin]))
+max.homewin <- k*max(usa.states$WHOME, na.rm = TRUE)
+max.awaywin <- k*max(usa.states$WAWAY, na.rm = TRUE)
+max.win <- max(max.homewin, max.awaywin)
+barve <- heat.colors(max.win)[max.win:1]
+print(spplot(usa.states, "WHOME", col.regions = barve[1:max.homewin], main = "Učinkovitost zveznih držav na domačih tekmah"))
+print(spplot(usa.states, "WAWAY", col.regions = barve[1:max.awaywin], main = "Učinkovitost zveznih držav na gostujočih tekmah"))
 
 dev.off()
-
-
-
-
-# contiguous.states$ekipe <- c(1:7, rep(NA, 42)) # tukaj seveda podaš dejanske podatke
-# 
-# 
-# spplot(contiguous.states, "ekipe", col.regions = topo.colors(100),
-#        col = "white")
-# 
-# spplot(contiguous.states, 2, col.regions=rainbow(16))
-# 
-# contiguous.states$WHOME <- zmage$WHOME
-# spplot(contiguous.states, "WHOME", col.regions = topo.colors(100))
-
-###
-
-# usa.states$W <- zmage$W
-# usa.states$NAME_1 <- levels(usa.states$NAME_1)
-
-
-# m <- match(usa.states$NAME_1, rownames(zmage))
-# pop <- zmage[m,1] # podatki o zmagah v 1. stolpcu
-# n <- 10 # 6 kategorije
-# q <- quantile(pop, (1:n)/n, na.rm = TRUE)
-# barve <- topo.colors(n)
-# plot(usa.states, col = barve[sapply(pop, function(x) which(x <= q)[1])])

@@ -4,6 +4,7 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{graphicx}
 \usepackage{pdfpages}
+\usepackage{hyperref}
 
 \pagestyle{plain}
 
@@ -18,6 +19,8 @@ Analiza podatkov s programom R}
 V mojem projektu se bom ukvarjal s podrobno analizo NBA ekip v sezoni 2013/2014. Za vsako ekipo me bo zanimalo število zmag in porazov, povprečno število košev na tekmo in druge spremenljivke. Nekatere bom dodal sam (npr. ali je igralec v moštvu dober strelec; kriterij za dobrega strelca pa bo recimo več kot 20 točk na tekmo). Primerjal bom dve statistični spremenljivki, in sicer povprečno število košev na tekmo in število zmag. Podatke za vsako ekipo bom primerjal s podatki za ostale ekipe in na podlagi tega sklepal, ali je ekipa svoj uspeh gradila na čvrsti obrambi ali na zaneslivem napadu. Na podlagi vsake statistične spremenljivke bom ekipe razvrstil od najboljše do najslabše, nato pa bom ugotavljal, katere pozitivno vplivajo na njihovo uspešnost.
 Prav tako bom uvozil še eno podobno tabelo. Razlikovala pa se bo v tem, da bodo na tej le podatki za tekme v gosteh. Ti dve tabeli bom med seboj primerjal, saj me bo zanimalo, v kakšni meri vpliva kraj tekme (doma, v gosteh) na uspešnost ekipe.
 V drugem delu projekta pa se bom osredotočil na NBA ekipo Phoenix Suns. Zanimali me bosta predvsem dve spremenljivki, in sicer strelska uspešnost in povprečnen čas, ki ga igralec preživi na parketu. Ti dve   spremenljivki mi bosta v pomoč pri ugotavljanju, kateri izmed igralcev je bil najučinkovitejši glede na minutažo.
+Spletne strani:
+\url
 
 \section{Obdelava, uvoz in čiščenje podatkov}
 
@@ -25,10 +28,32 @@ Podatke, ki sem jih pridobil iz spletnih strani, navedenih v prvi fazi, sem prek
 
 \includepdf[pages={1-2}]{../slike/Grafi.pdf}
 
-% \section{Analiza in vizualizacija podatkov}
-% 
-% \includegraphics{../slike/povprecna_druzina.pdf}
-% 
+\section{Analiza in vizualizacija podatkov}
+
+V tretji fazi sem uporabil že prej uvožene podatke, pa tudi nove podatke, in na podlagi teh izdelal zemljevid.
+
+Program sem napisal v skripto \verb|vizualizacija.r| v mapi \verb|vizualizacija| in ga vključil v \verb|projekt.r|, da se pokliče z ukazom \verb|Source|.
+
+Spremembe v uvozu
+V uvozu sem imel različne tabele z obilo podatki, vendar ti podatki niso povsem vezani na neko državo oz. zvezno državo, zato sem uvozil še nekaj tabel, in sicer \verb|nbacities|, \verb|zmage|,
+\verb|usa3|. Tabela \verb|nbacities| prikazuje ameriške zvezne države in mesta, kjer se igra košarkarska liga NBA. Na spletu sem poiskal koordinate za željena mesta, in sicer na spletni strani \url{http://www.infoplease.com/ipa/A0001796.html} ter jih vključil v mojo tabelo. Tabela \verb|zmage| prikazuje domače in gostujoče zmage za posamezne zvezne države. V primeru, da je bilo v eni zvezni državi več ekip, sem podatke seštel in deljiv s številom ekip. Tako sem dobil nekakšno povprečje. Tabeli \verb|usa3|, kjer so podatki za vse zvezne države, sem dodal stolpec division, kjer piše, kateri diviziji pripada posamezna zvezna država (tam , kjer se ne igra liga NBA so vrednosti NA).
+
+Vizualizacija
+Uvozil sem zemljevid \verb|USA| s pripadajočimi zveznimi državami. Zaradi boljše preglednosti sem odstranil tiste zvezne države, ki se ne držijo celinskega dela ZDA (npr. Aljaska, Havaji..), in shranil zemljevid kot \verb|usastates|. Na podlagi uvoženih podatkov sem nato narisal zemljevid ZDA, na njem pa označil mesta (zmagovalna ekipa sezone je obarvana z zlato), kjer se igra liga NBA. Zvezne države pa sem razdelil po divizijah (Pacific, Atlantic,..) in jih prav tako prikazal na zemljevidu.
+
+Z ukazom \verb|plot| sem ustvaril naslednji zemljevid:
+
+\includegraphics{../slike/USAcities.pdf}
+
+Drugi zemljevid je sestavljen iz dveh delov. 
+Na prvem zemljevidu so zvezne države, kjer se igra NBA, obarvane na podlagi učinkovitosti ekip na domačih tekmah, in sier temnejša barva pomeni več zmag.
+Na prvem zemljevidu so zvezne države, kjer se igra NBA, obarvane na podlagi učinkovitosti ekip na gostujočih tekmah, in sier temnejša barva pomeni več zmag.
+Cilj je bil prikazati dva zemljevida in grafično potrditi, da so ekipe bolj uspešne, ko igrajo na domačem terenu.
+
+Z ukazom \verb|spplot| sem ustvaril naslednji zemljevid:
+
+\includegraphics{../slike/USAstats.pdf}
+
 % \section{Napredna analiza podatkov}
 % 
 % \includegraphics{../slike/naselja.pdf}
