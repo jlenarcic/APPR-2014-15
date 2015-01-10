@@ -1,3 +1,7 @@
+# Pobrišemo PDF-je in počistimo delovno okolje
+silent <- TRUE
+source("clearpdf.r")
+
 # 2. faza: Obdelava, uvoz in čiščenje podatkov
 source("uvoz/uvoz.r")
 source("slike/Grafi.R")

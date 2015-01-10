@@ -59,6 +59,14 @@ points(coordinates(nbacities[c("long", "lat")]),
        cex = ifelse(sanantonio, 0.8, 0.6),
        col = ifelse(sanantonio, "gold", "orange"))
 
+legend("topright",
+       legend=c("Atlantic", "Central", "Southeast", "Northwest","Pacific","Southwest"),
+       col=c("lightpink1","lightskyblue2","lightsteelblue4","lightcyan3","lightcoral","lightgoldenrod"),
+       lty = c("solid", "solid", "solid", "solid","solid","solid"),
+       title="Division",
+       lwd = c(10, 10, 10, 10, 10, 10),
+       bg = "white")
+
 #Spremenjene koordinate in imena za ameriška mesta
 koordinate <- coordinates(nbacities[c("long", "lat")])
 imena <- as.character(nbacities$capital)
@@ -70,14 +78,15 @@ koordinate["San Antonio",1] <- koordinate["San Antonio",1] - 1.4
 koordinate["Miami",1] <- koordinate["Miami",1] + 1
 koordinate["New Orleans",2] <- koordinate["New Orleans",2] - 0.6
 koordinate["New Orleans",1] <- koordinate["New Orleans",1] + 0.3
-koordinate["Washington",1] <- koordinate["Washington",1] -1.7
-koordinate["Philadelphia",1] <- koordinate["Philadelphia",1] + 2.3
+koordinate["Washington",1] <- koordinate["Washington",1] -2.5
+koordinate["Philadelphia",1] <- koordinate["Philadelphia",1] + 3.1
 koordinate["Los Angeles",2] <- koordinate["Los Angeles",2] -0.3
 koordinate["New York",1] <- koordinate["New York",1] + 1.5
 koordinate["Toronto",2] <- koordinate["Toronto",2] + 1.5
 koordinate["Detroit",2] <- koordinate["Detroit",2] + 1.5
 koordinate["Boston",1] <- koordinate["Boston",1] + 2.8
 koordinate["Boston",2] <- koordinate["Boston",2] + 1.4
+koordinate["Orlando",1] <- koordinate["Orlando",1] + 2.8
 imena["Los Angeles"] <- "Los\nAngeles"
 imena["San Antonio"] <- "San\nAntonio"
 
