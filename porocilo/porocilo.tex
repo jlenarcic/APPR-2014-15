@@ -48,20 +48,18 @@ Tabeli \verb|usa3|, kjer so podatki za vse zvezne države, sem dodal stolpec div
 Vizualizacija
 Uvozil sem zemljevid \verb|USA| s pripadajočimi zveznimi državami. Zaradi boljše preglednosti sem odstranil tiste zvezne države, ki se ne držijo celinskega dela ZDA (npr. Aljaska, Havaji..), in shranil zemljevid kot \verb|usastates|. Na podlagi uvoženih podatkov sem nato narisal zemljevid ZDA, na njem pa označil mesta (zmagovalna ekipa sezone je obarvana z zlato), kjer se igra liga NBA. Zvezne države pa sem razdelil po divizijah (Pacific, Atlantic,..) in jih prav tako prikazal na zemljevidu.
 
-Z ukazom \verb|plot| sem ustvaril naslednji zemljevid:
-
-\includegraphics{../slike/USAcities.pdf}
-
 Drugi zemljevid je sestavljen iz dveh delov. 
 Na prvem zemljevidu so zvezne države, kjer se igra NBA, obarvane na podlagi učinkovitosti ekip na domačih tekmah, in sier temnejša barva pomeni več zmag.
 Na prvem zemljevidu so zvezne države, kjer se igra NBA, obarvane na podlagi učinkovitosti ekip na gostujočih tekmah, in sier temnejša barva pomeni več zmag.
 Cilj je bil prikazati dva zemljevida in grafično potrditi, da so ekipe bolj uspešne, ko igrajo na domačem terenu.
 
-Z ukazom \verb|spplot| sem ustvaril naslednji zemljevid:
+Z ukazoma \verb|plot| in \verb|spplot| sem ustvaril naslednja zemljevida:
 
 \makebox[\textwidth][c]{
-\includegraphics[width=1.2\textwidth]{../slike/USAstats.pdf}
+\includegraphics{../slike/USAcities.pdf}
 }
+
+\includepdf[pages={1-2}]{../slike/USAstats.pdf}
 
 % \section{Napredna analiza podatkov}
 % 
