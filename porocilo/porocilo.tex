@@ -61,7 +61,7 @@ Tabela \textbf{NBASTATES} (v CSV obliki) vsebuje 29 stolpcev. Za vsako NBA ekipo
 \item{\verb|status ekipe (dobra, slaba,..)| (urejenostna spremenljivka),}
 \item{\verb|zvezna država, v kateri ekipa domuje| (imenska spremenljivka).}
 \end{enumerate}
-\newline
+\\
 
 Tabela \textbf{zmage} (v CSV obliki) vsebuje 3 stolpce. Za vsako zvezno državo so podani naslednji podatki:
 
@@ -71,7 +71,7 @@ Tabela \textbf{zmage} (v CSV obliki) vsebuje 3 stolpce. Za vsako zvezno državo 
 \item{\verb|gostujoče zmage| (številska spremenljivka).}
 \end{enumerate}
 
-\newline
+\\
 Tabela \textbf{usa4} (v CSV obliki) vsebuje 5 stolpcev. Za vsako zvezno državo so podani naslednji podatki:
 
 \begin{enumerate}
@@ -82,7 +82,7 @@ Tabela \textbf{usa4} (v CSV obliki) vsebuje 5 stolpcev. Za vsako zvezno državo 
 \item{\verb|konferenca, v kateri je posamezna zvezna država| (imenska spremenljivka).}
 \end{enumerate}
 
-\newline
+\\
 Tabela \textbf{place} (v CSV obliki) vsebuje 2 stolpca. Za vsako ekipo so podani podatki o izdatkih za plače igralcem v sezoni 13/14:
 
 \begin{enumerate}
@@ -90,7 +90,7 @@ Tabela \textbf{place} (v CSV obliki) vsebuje 2 stolpca. Za vsako ekipo so podani
 \item{\verb|izdatki za plače igralcem| (številska spremenljivka).}
 \end{enumerate}
 
-\newline
+\\
 \textbf{Tabela ANA1} (v CSV obliki) prikazuje statistične podatke za ekipo PHOENIX Suns, in sicer za obdobje petih let:
 
 \begin{enumerate}
@@ -102,13 +102,14 @@ Tabela \textbf{place} (v CSV obliki) vsebuje 2 stolpca. Za vsako ekipo so podani
 \item{\verb|točke| (številska spremenljivka).}
 \end{enumerate}
 
-\newline
+\\
 \textbf{Tabela ANA2} (v CSV obliki) vsebuje podatke:
 \begin{enumerate}
 \item{\verb|sezona-leto| (številska spremenljivka),}
 \item{\verb|število tujcev v ligi| (številska spremenljivka),}
 \end{enumerate}
-\newline
+\\
+
 \textbf{Na naslednjih dveh straneh sledijo grafi.}
 
 \includepdf[pages={1-2}]{../slike/Grafi.pdf}
@@ -126,13 +127,13 @@ V uvozu sem imel različne tabele z obilo podatki, vendar ti podatki niso povsem
 
 Tabela \verb|zmage| prikazuje domače in gostujoče zmage za posamezne zvezne države. V primeru, da je bilo v eni zvezni državi več ekip, sem podatke seštel in deljiv s številom ekip. Tako sem dobil nekakšno povprečje.\\
 
-Tabeli \verb|usa3|, kjer so podatki za vse zvezne države, sem dodal stolpec division, kjer piše, kateri diviziji pripada posamezna zvezna država (tam , kjer se ne igra liga NBA so vrednosti NA).
-
+Tabeli \verb|usa3|, kjer so podatki za vse zvezne države, sem dodal stolpec division, kjer piše, kateri diviziji pripada posamezna zvezna država (tam , kjer se ne igra liga NBA so vrednosti NA).\\
+\\
 \textbf{Vizualizacija}
 \newline
-Uvozil sem zemljevid \verb|USA| s pripadajočimi zveznimi državami. Zaradi boljše preglednosti sem odstranil tiste zvezne države, ki se ne držijo celinskega dela ZDA (npr. Aljaska, Havaji..), in shranil zemljevid kot \verb|usastates|. Na podlagi uvoženih podatkov sem nato narisal zemljevid ZDA, na njem pa označil mesta (zmagovalna ekipa sezone je obarvana z zlato), kjer se igra liga NBA. Zvezne države pa sem razdelil po divizijah (Pacific, Atlantic,..) in jih prav tako prikazal na zemljevidu.
+Uvozil sem zemljevid \verb|USA| s pripadajočimi zveznimi državami. Zaradi boljše preglednosti sem odstranil tiste zvezne države, ki se ne držijo celinskega dela ZDA (npr. Aljaska, Havaji..), in shranil zemljevid kot \verb|usastates|. Na podlagi uvoženih podatkov sem nato narisal zemljevid ZDA, na njem pa označil mesta (zmagovalna ekipa sezone je obarvana z zlato), kjer se igra liga NBA. Zvezne države pa sem razdelil po divizijah (Pacific, Atlantic,..) in jih prav tako prikazal na zemljevidu.\\
 
-\newline
+
 Drugi zemljevid je sestavljen iz dveh delov. 
 Na prvem zemljevidu so zvezne države, kjer se igra NBA, obarvane na podlagi učinkovitosti ekip na domačih tekmah, in sier temnejša barva pomeni več zmag.
 Na prvem zemljevidu so zvezne države, kjer se igra NBA, obarvane na podlagi učinkovitosti ekip na gostujočih tekmah, in sier temnejša barva pomeni več zmag.\\
@@ -159,7 +160,9 @@ Kar se tega dela problema tiče, bom izračunal odstopanja napovedanih vrednosti
 
 Linearni izračun vrne vrednost 226.02424, medtem ko izračun za kvadratni model vrne vrednost 71.10758. Iz tega sledi, da se kvadratni model bolje prilega mojim podatkom. Če bi bilo podatkov več, bi model pokazal natančnejši prikaz naraščanja tujcev.\\
 
-\includepdf[pages={1}]{../slike/internationalplayers.pdf}
+\makebox[\textwidth][c]{
+\includegraphics{../slike/internationalplayers.pdf}
+}
 
 Nato sem s temi podatki želel napovedati, kako se bo gibalo število tujcev v prihajajočih letih (sezonah). S funkcijo predict sem napisal novo funkcijo, ki napove podatke (odvisna od izbire modela: linearni, kvadratni). V zadnji NBA sezoni je bil postavljen rekord števila neameričanov v ligi, in sicer 101. Zanimalo me je, kdaj bo igralo 120 tujcev v ligi. Poiskal sem presečišča linearne oz. kvadratne funkcije s funkcijo y = 120 in prišel do naslednjih ugotovitev: po kvadratnem modelu bi naj to bilo v sezoni 2016/17;
 po linearnem modelu pa v sezoni 2028/29.\\
@@ -177,13 +180,21 @@ V 4. fazi projekta sem se prav tako odločil raziskati, katere izmed statističn
 \newpage
 Kot izhodiščno spremenljivko sem si izbral zmage in gledal kako se druge spremenljivke obnašajo ob spreminjanju števila zmag. Če smo pozorni na \verb|zmage|, \verb|točke| (strelska učinkovitost) in \verb|napake|(izgubljene žoge), lahko iz grafa opazimo, da so te spremenljivke med seboj najbolj povezane. Krivulji točk in napak imata največji vrednosti v letih 2010 in 2014, in tudi število zmag je v omenjenih letih največje. Prav tako pa je v letu 2013 izrazito veliko napak in slaba strelska uspešnost ekipe, temu primeren pa je močan padec števila zmag. V košarki je tudi pomemben podatek o skokih, in sicer krivulja skokov ima največjo vrednost ravno v letih, kjer je število zmag izrazito veliko. V vmesnih sezonah pa ta spremenljivka ni preveč zanesljiva, da bi si samo na podlagi nje upali trditi o številu zmag (morda bi lahko povečal nabor podatkov in tako izboljšal samo analiziranje).\\
 
-Kot opombo bi dodal, da sem podatke o asistencah množil z 2, podatke o številu točk pa delil s 3. Tako sem vse krivulje lahko prikazal na enem grafu in tako lažje opazoval, v kakšnem odnosu so spremenljivke ena do druge.
+Kot opombo bi dodal, da sem podatke o asistencah množil z 2, podatke o številu točk pa delil s 3. Tako sem vse krivulje lahko prikazal na enem grafu in tako lažje opazoval, v kakšnem odnosu so spremenljivke ena do druge.\\
 
 
 % \includegraphics{../slike/naselja.pdf}
+\\
 
-\newline
-V tretjem delu te zadnje faze sem se lotil raziskati še eno vprašanje. Narisal sem dendogram in ugotavljal, kako se v skupine razvrstijo NBA ekipe. Najprej sem skonstruiral tabelo \verb|NBA2|,kjer so podatki za vse NBA ekipe,
+Prav tako me je zanimalo, kateri izmed igralcev je bil najbolj učinkovit kar se števila košev tiče, in seveda minut, prebitih na parketu. Že v drugi fazi sem ugotovil, da so najbolj točkovno uspešni igralci ekipe Phoenix Suns Dragič, Bledsoe, Green in Morris. Spaševal sem se, ali je veliko število točk na tekmo le posledica visoke minutaže ali pa dejansko gre za odlične strelce (boljše od ostalih soigralcev). Indeks uspešnosti sem izračunal tako, da sem pri vsakem igralcu povprečno število točk delil z povprečno število prebitih minut na igrišču. Na koncu sem prišel do spoznanja, da imajo prav ti štirje najboljši igralci tudi največje indekse. Naslednji graf pa prikazuje učinkovitost (točke/minute) igralcev ekipe Phoenix Suns.\\
+\makebox[\textwidth][c]{
+\includegraphics{../slike/indeksphx.pdf}
+}
+
+Na nasldenjih dveh grafih sem prikazal delitev igralcev ekipe Phoenix Suns glede na minute prebite na parketu, povprečje danih točk na tekmo in razmerje med danimi in prejetimi koši ekipe, ko je igralec na parketu. V skupini 1 z rdečo barvo so igralci, ki ne pripomorejo ekipi do velikih uspehov, bodisi zaradi slabe minutaže oz. slabe strelske učinkovitosti, morda tudi slabe igre v obrambi. V drugi skupini z modro barvo so igralci, ki največ pripomorejo k uspehu ekipe. V tretji skupini z zeleno barvo pa so igralci srednjega razreda, vendar vsekakor pomemben del ekipe. V pozitivnem smislu najbolj izstopata igralca v modri barvi, ki smo ju že prej potrdili za odlična.
+
+
+V naslednjem delu te zadnje faze sem se lotil raziskati še eno vprašanje. Narisal sem dendogram in ugotavljal, kako se v skupine razvrstijo NBA ekipe. Najprej sem skonstruiral tabelo \verb|NBA2|,kjer so podatki za vse NBA ekipe,
 in kjer v stolpcih nastopajo le spremenljivke, kjer višja vrednost pomeni več oz. boljše (ni napak oz. izgubljenih žog, kjer več pomeni slabše).\\
 
 Nato sem s funkcijo \verb|scale| normaliziral podatke in narisal dendogram.
@@ -193,17 +204,43 @@ Klube sem s funkcijo \verb|rect.hclust| razdelil v 3 skupine. Prav tako sem dend
 \includegraphics{../slike/hierarhija1.pdf}
 }
 
-Skupina 1 predstavlja najslabše klube v ligi, skupina 3 pa najboljše.
-Nato sem narisal še en dendogram, ki nazorno prikazuje, katere ekipe so porabile največ in katere najmanj za plače. V grobem je moč potrditi tezo, da so klubi z več denarja, dražjimi igralci konkurenčnejši od tistih z manj znanimi imeni.\\
+\newpage
+Skupina 1 v rdeči barvi predstavlja najboljše klube v ligi, skupina 2 v modri pa najslabše, v skupini 3 v zeleni barvi so srednje dobri klubi.
+Nato sem narisal še en dendogram, ki nazorno prikazuje, katere ekipe so porabile največ in katere najmanj za plače. Med klubi, ki so porabili največ za plače igralcev so Brooklyn Nets, New York Knicks, Miami Heat, LA Lakers. V dendogramu po učinkovitosti ekipe glede na več spremenljivk so te ekipe postavljene v 1. skupino (najboljše). Ekipe z manjšimi izdatki za plače in posledično z manj zvezdniki v ekipi so Philadelphia 76ers, Milwaukee Bucks, Utah Jazz, Sacramento Kings, Charlotte Bobcats, Detroit Pistons. Te ekipe so v dendogramu glede na uspešnost uvrščene v 2. skupino (najslabše). Seveda prihaja tudi do izjem kot npr. ekipe San Antonio Spurs, Phoenix Suns in še kakšna, vendar je v grobem moč potrditi tezo, da so klubi z več denarja, dražjimi igralci konkurenčnejši od tistih z manj znanimi imeni.\\
 
-\makebox[\textwidth][c]{
-\includegraphics{../slike/hierarhija2.pdf}
-}
+\newpage
+\section{Zaključek}
+Za konec lahko povem, da sem z delom na projektu podrobneje spoznal, kateri izmed statističnih podatkov so bolj oz. manj pomembni v svetu košarke, pa tudi, da teren same tekme (domači, gosti) igra še kako pomembno vlogo v svetu športa. Prav tako sem narisal zemljevid ZDA in nazorno pokazal, kje se igra liga NBA, katera območja so morda bolj zapostavljena, kar se tiče profesionalne košarke, pa tudi v katero divizijo je razvrščena posamezna ekipa. Prav tako me je zanimalo, koliko neameričanov igra v ligi. Prišel sem do podatkov, da se število tujcev počasi, a vztrajno povečuje. V sezoni 14/15 je bil postavljen rekord, in sicer 101 igralec tujega porekla (neameričan). S funkcijo predict sem skušal z linearnim in kvadratnim modelom napovedati, kdaj bo v ligi igralo 120 tujcev in prišel do kar velikih odstopanj. Kljub temu, da bi naj bila kvadratna metoda natančnejša, se mi zdi, da je večja verjetnost, da bo omenjeno število tujcev v ligi igralo leta 2028, in ne 2017 kot pravi kvadratna metoda. Vzrok za tako velika odstopanja so v tem, da nisem imel velikega nabora podatkov na spletu (našem sem jih le od leta 2005 do danes). Na koncu sem še skušal raziskati, ali izdatki, ki jih klubi namenijo za plače igralcev, vplivajo na športne rezultate. Prišel sem do ugotovitve, da je v grobem to res, saj višje plače privabijo boljše igralce oz. zvezdnike z več kvalitetami, posledično pa so tudi rezultati boljši. Glavni cilj projekta je bil spoznati in delati z orodjem R Studio ter podrobno analizirati poljubne zbrane podatke. Mislim, da je projekt uspel in da sem pridobil izkušnje in znanja za delo na področju statistične analize podatkov.
 
-http://sportslistoftheday.com/2013/12/15/nba-2013-14-team-payrolls-and-salary-cap-hits/
-\begin{itemize}
-  \item 
-
-\end{itemize}
+\newpage
+\begin{thebibliography}{9}
+\bibitem{1}
+  \url{http://sportslistoftheday.com/2013/12/15/nba-2013-14-team-payrolls-and-salary-cap-hits/}\\
+  {Accessed: 01-03-2015}
+\bibitem{2}
+  \url{http://en.wikipedia.org/wiki/List_of_Olympic_Games_host_cities}\\
+  {Accessed: 01-03-2015}
+\bibitem{3}
+  \url{http://stats.nba.com/league/team/#!/?Season=2013-14}\\
+  {{Accessed: 01-03-2015}
+\bibitem{3}
+  \url{http://stats.nba.com/league/team/#!/?Season=2013-14&Location=Road}\\
+  {Accessed: 01-03-2015}
+\bibitem{3}
+  \url{http://stats.nba.com/team/#!/1610612756/players/?Season=2013-14}\\
+  {Accessed: 01-03-2015}
+\bibitem{3}
+  \url{http://www.infoplease.com/ipa/A0001796.html}\\
+  {Accessed: 01-03-2015}
+\bibitem{3}
+  \url{http://gadm.org/download}\\
+  {Accessed: 01-03-2015}
+\bibitem{3}
+  \url{http://en.wikipedia.org/wiki/List_of_foreign_NBA_players}\\
+  {Accessed: 01-03-2015}
+\bibitem{3}
+  \url{http://en.wikipedia.org/wiki/National_Basketball_Association}\\
+  {Accessed: 01-03-2015}
+\end{thebibliography}
 
 \end{document}

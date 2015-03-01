@@ -3,6 +3,7 @@ pdf("slike/Grafi.pdf", paper="a4r")
 priimki <- gsub("^.* ", "", rownames(phoenix))
 barplot(phoenix$PTS, las = 2, cex.names = 0.65,
         ylab = "Povprečje točk na tekmo",
+        xlab = "Igralci",
         ylim = c(0,25),
         names.arg = priimki, col = "orange",
         main = "Povprečno število točk na tekmo za posameznega igralca.")

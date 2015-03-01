@@ -39,7 +39,9 @@ usa.states$NAME_1 <- factor(usa.states$NAME_1)
 cat("Rišem zemljevid...\n")
 pdf("slike/USAcities.pdf")
 
-plot(usa.states, col = ifelse(usa4[as.character(usa.states$NAME_1),
+plot(usa.states,
+     border = "grey",
+     col = ifelse(usa4[as.character(usa.states$NAME_1),
                                    "conference"] == "Atlantic", "lightpink1",
                               ifelse(usa4[as.character(usa.states$NAME_1),
                                           "conference"]== "Central","lightskyblue2",
@@ -110,7 +112,7 @@ max.homewin <- k*max(usa.states$WHOME, na.rm = TRUE)
 max.awaywin <- k*max(usa.states$WAWAY, na.rm = TRUE)
 max.win <- max(max.homewin, max.awaywin)
 barve <- heat.colors(max.win)[max.win:1]
-print(spplot(usa.states, "WHOME", col.regions = barve[1:max.homewin], main = "Učinkovitost zveznih držav na domačih tekmah"))
-print(spplot(usa.states, "WAWAY", col.regions = barve[1:max.awaywin], main = "Učinkovitost zveznih držav na gostujočih tekmah"))
+print(spplot(usa.states, "WHOME", col.regions = barve[1:max.homewin], main = "Število domačih zmag v sezoni 13/14 po zveznih državah"))
+print(spplot(usa.states, "WAWAY", col.regions = barve[1:max.awaywin], main = "Število gostujočih zmag v sezoni 13/14 po zveznih državah"))
 
 dev.off()

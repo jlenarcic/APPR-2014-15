@@ -22,15 +22,15 @@ pdf("slike/internationalplayers.pdf")
 leto <- ANA2$SEZONA - 2000
 ply <- ANA2$TUJCI
 
-plot(leto, ply, xlab = "Leto", ylab = "Tuji igralci v NBA")
+plot(leto, ply, xlab = "Leto", ylab = "Tuji igralci v NBA", main = "Naraščanje števila tujcev v ligi NBA")
 legend(4.5, 102, c("Linearna", "Kvadratna"), lty=c(1,1), col = c("blue","red"))
 
-#Napišemo funkcijo za linearno rast
+#Napišem funkcijo za linearno rast
 
 linearna <- lm(ply ~ leto)
 abline(linearna, col="blue")
 
-#Preverimo če je populacija kvadratna funkcija
+#Napišem funkcijo za kvadratno rast
 
 kvadratna <- lm(ply ~ I(leto^2) + leto)
 curve(predict(kvadratna, data.frame(leto=x)), add = TRUE, col = "red")  
@@ -47,7 +47,7 @@ dev.off()
 
 
 
-#Narisali bomo napoved za rast prebivalstva do leta 2030 po modelu za modeala linear in kvadratna
+#Narisali bomo napoved za rast števila tujcev v NBA za linearni in kvadratni model
 
 pdf("slike/napoved.pdf")
 
@@ -73,6 +73,7 @@ curve(napoved(x, linearna), add= TRUE, lwd = 1.5, col = "blue")
 curve(napoved(x, kvadratna), add = TRUE, lwd = 1.5, col = "red")
 
 #Narišemo še legendo
+
 legend(2004, 65, c("Linearna (lm(pop ~ leto))", "Kvadratna (lm(pop ~ I(leto^2) + leto))",
                     "120 tujcev"),
        lty=c(1,1), col = c("blue","red", "black"))
@@ -99,13 +100,13 @@ legend("topright",
 
 dev.off()
 
-###################################################
+
 pdf("slike/hierarhija1.pdf")
 
-X <- scale(as.matrix(NBA2[1:11]))
+X <- scale(as.matrix(NBA2))
 t <- hclust(dist(X), method = "ward.D")
 
-plot(t, hang=-1, cex=0.4, main = "Športna uspešnost posamezne ekipe (Skupina 1 so najboljše ekipe)")
+plot(t, hang=-1, cex=0.4, main = "Športna uspešnost ekip")
 
 legend("topright", 
        c("Skupina 1", "Skupina 2","Skupina 3"),
@@ -124,7 +125,7 @@ pdf("slike/hierarhija2.pdf")
 Y <- scale(as.matrix(place[1]))
 z <- hclust(dist(Y), method = "ward.D")
 
-plot(z, hang=-1, cex=0.4, main = "Izdatki za plače za vsako ekipo (Skupina 1 - ekipe, z najvišjimi stroški")
+plot(z, hang=-1, cex=0.4, main = "Izdatki za plače")
 
 legend("topright", 
        c("Skupina 1", "Skupina 2","Skupina 3"),
@@ -134,4 +135,37 @@ rect.hclust(z,k=3,border=c("red","blue","green"))
 
 p2 <- cutree(z, k=3)
 
+dev.off()
+
+
+# V tem delu bom preveril, kateri izmed igralcev je bil najbolj koristen kar se košev tiče, glede na to, kako dolgo je preživel na parketu.
+# Torej učinkovitost igralcev.
+
+pdf("slike/indeksphx.pdf")
+
+povprecje <- apply(phoenix, 1, function(x) x[20]/x[2])
+phoenix$indeks <- povprecje
+
+priimki <- gsub("^.* ", "", rownames(phoenix))
+barplot(phoenix$indeks, las = 2, cex.names = 0.65,
+        ylab = "Dane točke / minutaža",
+        ylim = c(0,1),
+        names.arg = priimki, col = "orange",
+        main = "Učinkovitost posameznega igralca ekipe PHX Suns")
+
+dev.off()
+
+pdf("slike/dendogram1.pdf")
+
+barve1 = c("red", "green", "blue")
+XX <- scale(as.matrix(phoenix[c(2,20,21)]))
+e1 <- hclust(dist(XX), method = "ward.D")
+p1 <- cutree(e1, k=3)
+pairs(XX, col = barve1[p1])
+
+plot(e1, hang=-1, cex=0.4, main = "Razdelitev igralcev v skupine glede na minute in točke")
+rect.hclust(e1,k=3,border=c("red","blue","green"))
+legend("topright", 
+       c("Skupina 1", "Skupina 2","Skupina 3"),
+       lty=c(1,1,1), col = c("red","blue","green"))
 dev.off()
