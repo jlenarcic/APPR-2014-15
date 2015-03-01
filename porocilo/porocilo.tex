@@ -110,6 +110,23 @@ Tabela \textbf{place} (v CSV obliki) vsebuje 2 stolpca. Za vsako ekipo so podani
 \end{enumerate}
 \\
 
+
+\textbf{Tabela NBA2} (v CSV obliki) prikazuje statistične podatke za ekipe v NBAs:
+
+\begin{enumerate}
+\item{\verb|zmage| (številska spremenljivka),}
+\item{\verb|procent zadetih metov za dve| (številska spremenljivka),}
+\item{\verb|sprocent zadetih metov za tri| (številska spremenljivka),}
+\item{\verb|procent zadetih prostih metov| (številska spremenljivka),}
+\item{\verb|skoki| (številska spremenljivka),}
+\item{\verb|asistence| (številska spremenljivka),}
+\item{\verb|ukradene žoge| (številska spremenljivka),}
+\item{\verb|uspešne blokade| (številska spremenljivka),}
+\item{\verb|točke| (številska spremenljivka),}
+\item{\verb|razlika v danih in prejetih koših| (številska spremenljivka),}
+\end{enumerate}
+\\
+
 \textbf{Na naslednjih dveh straneh sledijo grafi.}
 
 \includepdf[pages={1-2}]{../slike/Grafi.pdf}
@@ -183,7 +200,6 @@ Kot izhodiščno spremenljivko sem si izbral zmage in gledal kako se druge sprem
 Kot opombo bi dodal, da sem podatke o asistencah množil z 2, podatke o številu točk pa delil s 3. Tako sem vse krivulje lahko prikazal na enem grafu in tako lažje opazoval, v kakšnem odnosu so spremenljivke ena do druge.\\
 
 
-% \includegraphics{../slike/naselja.pdf}
 \\
 
 Prav tako me je zanimalo, kateri izmed igralcev je bil najbolj učinkovit kar se števila košev tiče, in seveda minut, prebitih na parketu. Že v drugi fazi sem ugotovil, da so najbolj točkovno uspešni igralci ekipe Phoenix Suns Dragič, Bledsoe, Green in Morris. Spaševal sem se, ali je veliko število točk na tekmo le posledica visoke minutaže ali pa dejansko gre za odlične strelce (boljše od ostalih soigralcev). Indeks uspešnosti sem izračunal tako, da sem pri vsakem igralcu povprečno število točk delil z povprečno število prebitih minut na igrišču. Na koncu sem prišel do spoznanja, da imajo prav ti štirje najboljši igralci tudi največje indekse. Naslednji graf pa prikazuje učinkovitost (točke/minute) igralcev ekipe Phoenix Suns.\\
@@ -191,9 +207,13 @@ Prav tako me je zanimalo, kateri izmed igralcev je bil najbolj učinkovit kar se
 \includegraphics{../slike/indeksphx.pdf}
 }
 
-Na nasldenjih dveh grafih sem prikazal delitev igralcev ekipe Phoenix Suns glede na minute prebite na parketu, povprečje danih točk na tekmo in razmerje med danimi in prejetimi koši ekipe, ko je igralec na parketu. V skupini 1 z rdečo barvo so igralci, ki ne pripomorejo ekipi do velikih uspehov, bodisi zaradi slabe minutaže oz. slabe strelske učinkovitosti, morda tudi slabe igre v obrambi. V drugi skupini z modro barvo so igralci, ki največ pripomorejo k uspehu ekipe. V tretji skupini z zeleno barvo pa so igralci srednjega razreda, vendar vsekakor pomemben del ekipe. V pozitivnem smislu najbolj izstopata igralca v modri barvi, ki smo ju že prej potrdili za odlična.
+Na nasldenjih dveh grafih sem prikazal delitev igralcev ekipe Phoenix Suns glede na minute prebite na parketu, povprečje danih točk na tekmo, razmerje med danimi in prejetimi koši ekipe, ko je igralec na parketu ter drugimi statističnimi spremenljivkami iz tabele \verb|NBA2|. V skupini 1 z rdečo barvo so igralci, ki ne pripomorejo ekipi do velikih uspehov, bodisi zaradi slabe minutaže oz. slabe strelske učinkovitosti, morda tudi slabe igre v obrambi in drugih razlogov. V drugi skupini z modro barvo so igralci, ki največ pripomorejo k uspehu ekipe. V tretji skupini z zeleno barvo pa so igralci srednjega razreda, vendar vsekakor pomemben del ekipe. V pozitivnem smislu najbolj izstopata igralca v modri barvi, ki smo ju že prej potrdili za odlična, to sta Dragič in Bledsoe.
 
+\makebox[\textwidth][c]{
+\includegraphics{../slike/dendogram1.pdf}
+}
 
+\newpage
 V naslednjem delu te zadnje faze sem se lotil raziskati še eno vprašanje. Narisal sem dendogram in ugotavljal, kako se v skupine razvrstijo NBA ekipe. Najprej sem skonstruiral tabelo \verb|NBA2|,kjer so podatki za vse NBA ekipe,
 in kjer v stolpcih nastopajo le spremenljivke, kjer višja vrednost pomeni več oz. boljše (ni napak oz. izgubljenih žog, kjer več pomeni slabše).\\
 
@@ -208,7 +228,7 @@ Klube sem s funkcijo \verb|rect.hclust| razdelil v 3 skupine. Prav tako sem dend
 Skupina 1 v rdeči barvi predstavlja najboljše klube v ligi, skupina 2 v modri pa najslabše, v skupini 3 v zeleni barvi so srednje dobri klubi.
 Nato sem narisal še en dendogram, ki nazorno prikazuje, katere ekipe so porabile največ in katere najmanj za plače. Med klubi, ki so porabili največ za plače igralcev so Brooklyn Nets, New York Knicks, Miami Heat, LA Lakers. V dendogramu po učinkovitosti ekipe glede na več spremenljivk so te ekipe postavljene v 1. skupino (najboljše). Ekipe z manjšimi izdatki za plače in posledično z manj zvezdniki v ekipi so Philadelphia 76ers, Milwaukee Bucks, Utah Jazz, Sacramento Kings, Charlotte Bobcats, Detroit Pistons. Te ekipe so v dendogramu glede na uspešnost uvrščene v 2. skupino (najslabše). Seveda prihaja tudi do izjem kot npr. ekipe San Antonio Spurs, Phoenix Suns in še kakšna, vendar je v grobem moč potrditi tezo, da so klubi z več denarja, dražjimi igralci konkurenčnejši od tistih z manj znanimi imeni.\\
 
-\newpage
+\\
 \section{Zaključek}
 Za konec lahko povem, da sem z delom na projektu podrobneje spoznal, kateri izmed statističnih podatkov so bolj oz. manj pomembni v svetu košarke, pa tudi, da teren same tekme (domači, gosti) igra še kako pomembno vlogo v svetu športa. Prav tako sem narisal zemljevid ZDA in nazorno pokazal, kje se igra liga NBA, katera območja so morda bolj zapostavljena, kar se tiče profesionalne košarke, pa tudi v katero divizijo je razvrščena posamezna ekipa. Prav tako me je zanimalo, koliko neameričanov igra v ligi. Prišel sem do podatkov, da se število tujcev počasi, a vztrajno povečuje. V sezoni 14/15 je bil postavljen rekord, in sicer 101 igralec tujega porekla (neameričan). S funkcijo predict sem skušal z linearnim in kvadratnim modelom napovedati, kdaj bo v ligi igralo 120 tujcev in prišel do kar velikih odstopanj. Kljub temu, da bi naj bila kvadratna metoda natančnejša, se mi zdi, da je večja verjetnost, da bo omenjeno število tujcev v ligi igralo leta 2028, in ne 2017 kot pravi kvadratna metoda. Vzrok za tako velika odstopanja so v tem, da nisem imel velikega nabora podatkov na spletu (našem sem jih le od leta 2005 do danes). Na koncu sem še skušal raziskati, ali izdatki, ki jih klubi namenijo za plače igralcev, vplivajo na športne rezultate. Prišel sem do ugotovitve, da je v grobem to res, saj višje plače privabijo boljše igralce oz. zvezdnike z več kvalitetami, posledično pa so tudi rezultati boljši. Glavni cilj projekta je bil spoznati in delati z orodjem R Studio ter podrobno analizirati poljubne zbrane podatke. Mislim, da je projekt uspel in da sem pridobil izkušnje in znanja za delo na področju statistične analize podatkov.
 

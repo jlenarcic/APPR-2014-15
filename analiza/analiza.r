@@ -106,7 +106,7 @@ pdf("slike/hierarhija1.pdf")
 X <- scale(as.matrix(NBA2))
 t <- hclust(dist(X), method = "ward.D")
 
-plot(t, hang=-1, cex=0.4, main = "Športna uspešnost ekip")
+plot(t, hang=-1, cex=0.4, main = "Delitev ekip v skupine glede na športno uspešnost")
 
 legend("topright", 
        c("Skupina 1", "Skupina 2","Skupina 3"),
@@ -158,12 +158,12 @@ dev.off()
 pdf("slike/dendogram1.pdf")
 
 barve1 = c("red", "green", "blue")
-XX <- scale(as.matrix(phoenix[c(2,20,21)]))
+XX <- scale(as.matrix(phoenix[c(2,5,8,11:16,20,21)]))
 e1 <- hclust(dist(XX), method = "ward.D")
 p1 <- cutree(e1, k=3)
 pairs(XX, col = barve1[p1])
 
-plot(e1, hang=-1, cex=0.4, main = "Razdelitev igralcev v skupine glede na minute in točke")
+plot(e1, hang=-1, cex=0.4, main = "Razdelitev igralcev v skupine glede na kvaliteto")
 rect.hclust(e1,k=3,border=c("red","blue","green"))
 legend("topright", 
        c("Skupina 1", "Skupina 2","Skupina 3"),

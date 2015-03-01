@@ -5,10 +5,12 @@ source("lib/uvozi.zemljevid.r")
 
 # Uvozimo zemljevid.
 cat("Uvažam zemljevid...\n")
-USA <- uvozi.zemljevid("http://biogeo.ucdavis.edu/data/gadm2/shp/USA_adm.zip",
-                          "USA", "USA_adm1.shp", mapa = "zemljevid",
-                          encoding = "Windows-1250")
+# USA <- uvozi.zemljevid("http://biogeo.ucdavis.edu/data/gadm2/shp/USA_adm.zip",
+#                           "USA", "USA_adm1.shp", mapa = "zemljevid",
+#                           encoding = "Windows-1250")
 
+USA <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/states_21basic.zip",
+                       "USA", "states.shp", mapa = "zemljevid")
 
 # Funkcija, ki podatke preuredi glede na vrstni red v zemljevidu
 preuredi <- function(podatki, zemljevid) {
@@ -32,8 +34,8 @@ preuredi <- function(podatki, zemljevid) {
 
 #Hočemo dobiti le sklenjeni del ZDA, brez teritorialnih območij po svetu, ki so v lasti ZDA
 nocemo <- c("Alaska", "Hawaii", "Puerto Rico", "U.S. Virgin Islands")
-usa.states <- USA[!(USA$NAME_1 %in% nocemo),]
-usa.states$NAME_1 <- factor(usa.states$NAME_1)
+usa.states <- USA[!(USA$STATE_NAME %in% nocemo),]
+usa.states$NAME_1 <- factor(usa.states$STATE_NAME)
 
 # Narišimo zemljevid v PDF.
 cat("Rišem zemljevid...\n")
