@@ -169,9 +169,54 @@ conference <- factor(div1, levels = divizije, ordered = TRUE)
 detach(usa3)
 
 usa4 <- data.frame(usa3, conference)
-
+usa4$vote.2012 <- NULL
+usa4$electoral.votes <- NULL
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
 # datoteko, tukaj pa bi klicali tiste, ki jih potrebujemo v
 # 2. fazi. Seveda bi morali ustrezno datoteko uvoziti v prihodnjih
 # fazah.
+
+
+#TE TABELE SEM UVOYIL V 4. FAZI
+#TABELA 1 -> (4. faza) (Podatki za ekipo Phoenix Suns za obdobje petih let - le določene spremenljivke)
+uvozianaliza1 <- function() {
+  return(read.table("podatki/analiza1.csv", sep = ";", as.is = TRUE,
+                    header = TRUE,
+                    fileEncoding = "Windows-1250"))
+}
+cat("Uvažam podatke ... \n")
+ANA1 <- uvozianaliza1()
+
+#TABELA 2 -> (4. faza) (Število tujcev po sezonah v ligi NBA)
+uvozianaliza2 <- function() {
+  return(read.table("podatki/analiza2.csv", sep = ";", as.is = TRUE,
+                    header = TRUE,
+                    fileEncoding = "Windows-1250"))
+}
+cat("Uvažam podatke ... \n")
+ANA2 <- uvozianaliza2()
+
+
+uvoziigralci <- function() {
+  return(read.table("podatki/placeigralcev.csv", sep = ";", as.is = TRUE,
+                    header = TRUE,
+                    row.names = 1,
+                    fileEncoding = "Windows-1250"))
+}
+cat("Uvažam podatke o vseh ekipah... \n")
+place <- uvoziigralci()
+colnames(place) <- c("Salary")
+
+uvoziNBA2 <- function() {
+  return(read.table("podatki/NBA2.csv", sep = ";", as.is = TRUE,
+                    header = TRUE,
+                    row.names = 1,
+                    fileEncoding = "Windows-1250"))
+}
+cat("Uvažam podatke o vseh ekipah... \n")
+NBA2 <- uvoziNBA2()
+colnames(NBA2) <- c("W","FG%",
+                    "3P%","FT%","REB","AST","STL","BLK","BLKA",
+                    "PTS","+/-", "DIVISION")
+NBA2$DIVISION <- NULL

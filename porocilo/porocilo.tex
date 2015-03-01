@@ -25,7 +25,91 @@ V drugem delu projekta pa se bom osredotočil na NBA ekipo Phoenix Suns. Zanimal
 
 \section{Obdelava, uvoz in čiščenje podatkov}
 
-Podatke, ki sem jih pridobil iz spletnih strani, navedenih v prvi fazi, sem prekopiral v Excel in jih shranil kot CSV datoteke. Potem sem te datoteke uvozil v R STUDIO. Dvema od treh tabel sem še dodal po eno statistično spremenljivko (urejenostno), in sicer tabelama z naslovom NBA1 in phoenix. Podatke sem nato predstavil še grafično.
+Podatke, ki sem jih pridobil iz spletnih strani, navedenih v prvi fazi, sem prekopiral v Excel in jih shranil kot CSV datoteke. Potem sem te datoteke uvozil v R STUDIO. Dvema od treh tabel sem še dodal po eno statistično spremenljivko (urejenostno), in sicer tabelama z naslovom NBA1 in phoenix. Podatke sem nato predstavil še grafično. Sledijo predstavitve tabel in grafov za drugo fazo.\\
+\newpage
+
+Tabela \textbf{NBASTATES} (v CSV obliki) vsebuje 29 stolpcev. Za vsako NBA ekipo so podani naslednji podatki:
+
+\begin{enumerate}
+\item{\verb|ime NBA ekipe| (imenska spremenljivka),}
+\item{\verb|odigrane tekme| (številska spremenljivka),}
+\item{\verb|zmage| (številska spremenljivka),}
+\item{ \verb|porazi| (številska),}
+\item{\verb|odstotek zmag| (številska),}
+\item{\verb|povprečno število minut, ki jih je ekipa odigrala na tekmo (tudi podaljški)| (številska),}
+\item{\verb|povprečno število zadetih metov| (številska),}
+\item{\verb|povprečno število vseh metov| (številska) ,}
+\item{\verb|odstotek zadetih metov| (številska),}
+\item{\verb|povprečno število zadetih metov za tri| (številska spremenljivka),}
+\item{\verb|povprečno število vseh metov za tri| (številska),}
+\item{ \verb|odstotek zadetih trojk| (številska) (številska),}
+\item{\verb|povprečno število zadetih prostih metov| (številska),}
+\item{\verb|povprečno število vseh prostih metov| (številska),}
+\item{\verb|odstotek zadetih prostih metov| (številska),}
+\item{\verb|povprečno število skokov v napadu| (številska) ,}
+\item{\verb|povprečno število skokov v obrambi| (številska),}
+\item{\verb|povprečno število vseh skokov| (številska spremenljivka),}
+\item{\verb|povprečno število asistenc| (številska),}
+\item{ \verb|povprečno število napak| (številska),}
+\item{\verb|povprečno število ukradenih žog| (številska),}
+\item{\verb|povprečno število uspešnih blokad| (številska),}
+\item{\verb|povprečno število vseh poskusov blokad| (številska),}
+\item{\verb|povprečno število napravljenih osebnih napak| (številska) ,}
+\item{\verb|povprečno število osebnih napak, napravljenih s strani nasprotnika| (številska),}
+\item{\verb|povprečno število košev| (številska spremenljivka),}
+\item{\verb|povprečna razlika v koših na koncu tekme (za igralce pomeni: povprečna razlika v koših, ko je igralec v igri)| (številska),}
+\item{\verb|status ekipe (dobra, slaba,..)| (urejenostna spremenljivka),}
+\item{\verb|zvezna država, v kateri ekipa domuje| (imenska spremenljivka).}
+\end{enumerate}
+\newline
+
+Tabela \textbf{zmage} (v CSV obliki) vsebuje 3 stolpce. Za vsako zvezno državo so podani naslednji podatki:
+
+\begin{enumerate}
+\item{\verb|zvezna država| (imenska spremenljivka),}
+\item{\verb|domače zmage| (številska spremenljivka),}
+\item{\verb|gostujoče zmage| (številska spremenljivka).}
+\end{enumerate}
+
+\newline
+Tabela \textbf{usa4} (v CSV obliki) vsebuje 5 stolpcev. Za vsako zvezno državo so podani naslednji podatki:
+
+\begin{enumerate}
+\item{\verb|zvezna država| (imenska spremenljivka),}
+\item{\verb|glavno mesto zvezne države| (imenska spremenljivka),}
+\item{\verb|geo. širina glavnega mesta| (številska spremenljivka),}
+\item{\verb|geo. dolžina glavnega mesta| (številska spremenljivka),}
+\item{\verb|konferenca, v kateri je posamezna zvezna država| (imenska spremenljivka).}
+\end{enumerate}
+
+\newline
+Tabela \textbf{place} (v CSV obliki) vsebuje 2 stolpca. Za vsako ekipo so podani podatki o izdatkih za plače igralcem v sezoni 13/14:
+
+\begin{enumerate}
+\item{\verb|ekipe| (imenska spremenljivka).}
+\item{\verb|izdatki za plače igralcem| (številska spremenljivka).}
+\end{enumerate}
+
+\newline
+\textbf{Tabela ANA1} (v CSV obliki) prikazuje statistične podatke za ekipo PHOENIX Suns, in sicer za obdobje petih let:
+
+\begin{enumerate}
+\item{\verb|leto| (številska spremenljivka),}
+\item{\verb|zmage| (številska spremenljivka),}
+\item{\verb|skoki| (številska spremenljivka),}
+\item{\verb|asistence| (številska spremenljivka),}
+\item{\verb|napake| (številska spremenljivka),}
+\item{\verb|točke| (številska spremenljivka).}
+\end{enumerate}
+
+\newline
+\textbf{Tabela ANA2} (v CSV obliki) vsebuje podatke:
+\begin{enumerate}
+\item{\verb|sezona-leto| (številska spremenljivka),}
+\item{\verb|število tujcev v ligi| (številska spremenljivka),}
+\end{enumerate}
+\newline
+\textbf{Na naslednjih dveh straneh sledijo grafi.}
 
 \includepdf[pages={1-2}]{../slike/Grafi.pdf}
 
@@ -33,24 +117,25 @@ Podatke, ki sem jih pridobil iz spletnih strani, navedenih v prvi fazi, sem prek
 
 \section{Analiza in vizualizacija podatkov}
 
-V tretji fazi sem uporabil že prej uvožene podatke, pa tudi nove podatke, in na podlagi teh izdelal zemljevid.
+V tretji fazi sem uporabil že prej uvožene podatke, pa tudi nove podatke, in na podlagi teh izdelal zemljevid.\\
 
-Program sem napisal v skripto \verb|vizualizacija.r| v mapi \verb|vizualizacija| in ga vključil v \verb|projekt.r|, da se pokliče z ukazom \verb|Source|.
+Program sem napisal v skripto \verb|vizualizacija.r| v mapi \verb|vizualizacija| in ga vključil v \verb|projekt.r|, da se pokliče z ukazom \verb|Source|.\\
 
-Spremembe v uvozu
-V uvozu sem imel različne tabele z obilo podatki, vendar ti podatki niso povsem vezani na neko državo oz. zvezno državo, zato sem uvozil še nekaj tabel, in sicer \verb|nbacities|, \verb|zmage|,
-\verb|usa3|. Tabela \verb|nbacities| prikazuje ameriške zvezne države in mesta, kjer se igra košarkarska liga NBA. Na spletu sem poiskal koordinate za željena mesta, in sicer na spletni strani \url{http://www.infoplease.com/ipa/A0001796.html} ter jih vključil v mojo tabelo. 
+\textbf{Spremembe v uvozu}
+V uvozu sem imel različne tabele z obilo podatki, vendar ti podatki niso povsem vezani na neko državo oz. zvezno državo, zato sem uvozil še nekaj tabel, in sicer \verb|nbacities|, \verb|zmage|, \verb|usa3|. Tabela \verb|nbacities| prikazuje ameriške zvezne države in mesta, kjer se igra košarkarska liga NBA. Na spletu sem poiskal koordinate za željena mesta, in sicer na spletni strani \url{http://www.infoplease.com/ipa/A0001796.html} ter jih vključil v mojo tabelo.\\
 
-Tabela \verb|zmage| prikazuje domače in gostujoče zmage za posamezne zvezne države. V primeru, da je bilo v eni zvezni državi več ekip, sem podatke seštel in deljiv s številom ekip. Tako sem dobil nekakšno povprečje.
+Tabela \verb|zmage| prikazuje domače in gostujoče zmage za posamezne zvezne države. V primeru, da je bilo v eni zvezni državi več ekip, sem podatke seštel in deljiv s številom ekip. Tako sem dobil nekakšno povprečje.\\
 
 Tabeli \verb|usa3|, kjer so podatki za vse zvezne države, sem dodal stolpec division, kjer piše, kateri diviziji pripada posamezna zvezna država (tam , kjer se ne igra liga NBA so vrednosti NA).
 
-Vizualizacija
+\textbf{Vizualizacija}
+\newline
 Uvozil sem zemljevid \verb|USA| s pripadajočimi zveznimi državami. Zaradi boljše preglednosti sem odstranil tiste zvezne države, ki se ne držijo celinskega dela ZDA (npr. Aljaska, Havaji..), in shranil zemljevid kot \verb|usastates|. Na podlagi uvoženih podatkov sem nato narisal zemljevid ZDA, na njem pa označil mesta (zmagovalna ekipa sezone je obarvana z zlato), kjer se igra liga NBA. Zvezne države pa sem razdelil po divizijah (Pacific, Atlantic,..) in jih prav tako prikazal na zemljevidu.
 
+\newline
 Drugi zemljevid je sestavljen iz dveh delov. 
 Na prvem zemljevidu so zvezne države, kjer se igra NBA, obarvane na podlagi učinkovitosti ekip na domačih tekmah, in sier temnejša barva pomeni več zmag.
-Na prvem zemljevidu so zvezne države, kjer se igra NBA, obarvane na podlagi učinkovitosti ekip na gostujočih tekmah, in sier temnejša barva pomeni več zmag.
+Na prvem zemljevidu so zvezne države, kjer se igra NBA, obarvane na podlagi učinkovitosti ekip na gostujočih tekmah, in sier temnejša barva pomeni več zmag.\\
 Cilj je bil prikazati dva zemljevida in grafično potrditi, da so ekipe bolj uspešne, ko igrajo na domačem terenu.
 
 Z ukazoma \verb|plot| in \verb|spplot| sem ustvaril naslednja zemljevida:
@@ -61,8 +146,64 @@ Z ukazoma \verb|plot| in \verb|spplot| sem ustvaril naslednja zemljevida:
 
 \includepdf[pages={1-2}]{../slike/USAstats.pdf}
 
-% \section{Napredna analiza podatkov}
-% 
+
+
+\section{Napredna analiza podatkov}
+
+Prišel sem na idejo, da bi lahko analiziral podatke o številu tujih igralcev (international players), ki igrajo v ligi NBA oz. njihovo naraščanje skozi daljše časovno obdobje. Ker tovrstnih podatkov nisem našel na spletu v obliki, ki bi si jo želel (torej sistematično urejeni podatki po letih), sem podatke poiskal s pomočjo različnih spletnih virov, pa še to le za sezone od 2005 do danes. Za cilj sem si postavil odgovor na vprašanje, kakšen je trend igranja tujcev v ligi NBA, torej ali narašča, pada, stagnira. Zanimalo me je tudi, o kakšni številki tujih košarkarjev v ligi NBA lahko govorimo v bližnji prihodnosti.\\
+
+Iz danih podatkov sem sestavil dva možna modela, ki bi lahko pokazala, kakšen je trend spreminjanja števila tujcev v ligi. Eden je linearni, drugi pa kvadratni model. Zanimalo me je, kateri se boljše prilega mojim podatkom. 
+To lahko preverim s točno metodo oz. izračunom, kateri model se boljše prilega ali pa s sklepanjem iz grafa. \\
+
+Kar se tega dela problema tiče, bom izračunal odstopanja napovedanih vrednosti od dejanskih (te vrednosti so preračunane vsote kvadratov razdalj od napovedanih do dejanskih vrednosti). Model z manjšo vsoto kvadratov razdalj bo tisti, ki se mojemu tipu podatkov bolj prilega.\\
+
+Linearni izračun vrne vrednost 226.02424, medtem ko izračun za kvadratni model vrne vrednost 71.10758. Iz tega sledi, da se kvadratni model bolje prilega mojim podatkom. Če bi bilo podatkov več, bi model pokazal natančnejši prikaz naraščanja tujcev.\\
+
+\includepdf[pages={1}]{../slike/internationalplayers.pdf}
+
+Nato sem s temi podatki želel napovedati, kako se bo gibalo število tujcev v prihajajočih letih (sezonah). S funkcijo predict sem napisal novo funkcijo, ki napove podatke (odvisna od izbire modela: linearni, kvadratni). V zadnji NBA sezoni je bil postavljen rekord števila neameričanov v ligi, in sicer 101. Zanimalo me je, kdaj bo igralo 120 tujcev v ligi. Poiskal sem presečišča linearne oz. kvadratne funkcije s funkcijo y = 120 in prišel do naslednjih ugotovitev: po kvadratnem modelu bi naj to bilo v sezoni 2016/17;
+po linearnem modelu pa v sezoni 2028/29.\\
+
+\makebox[\textwidth][c]{
+\includegraphics{../slike/napoved.pdf}
+}
+
+\newpage
+V 4. fazi projekta sem se prav tako odločil raziskati, katere izmed statističnih spremenljivk so med seboj bolj korelirane in katere manj. Podatke sem jemal iz tabele \verb|ANA1|, in sicer zanimali so me podatki o zmagah, skokih, asistencah, točkah in napakah za ekipo Phoenix Suns (za obdobje petih let).\\
+
+\makebox[\textwidth][c]{
+\includegraphics{../slike/analiza.pdf}
+}
+\newpage
+Kot izhodiščno spremenljivko sem si izbral zmage in gledal kako se druge spremenljivke obnašajo ob spreminjanju števila zmag. Če smo pozorni na \verb|zmage|, \verb|točke| (strelska učinkovitost) in \verb|napake|(izgubljene žoge), lahko iz grafa opazimo, da so te spremenljivke med seboj najbolj povezane. Krivulji točk in napak imata največji vrednosti v letih 2010 in 2014, in tudi število zmag je v omenjenih letih največje. Prav tako pa je v letu 2013 izrazito veliko napak in slaba strelska uspešnost ekipe, temu primeren pa je močan padec števila zmag. V košarki je tudi pomemben podatek o skokih, in sicer krivulja skokov ima največjo vrednost ravno v letih, kjer je število zmag izrazito veliko. V vmesnih sezonah pa ta spremenljivka ni preveč zanesljiva, da bi si samo na podlagi nje upali trditi o številu zmag (morda bi lahko povečal nabor podatkov in tako izboljšal samo analiziranje).\\
+
+Kot opombo bi dodal, da sem podatke o asistencah množil z 2, podatke o številu točk pa delil s 3. Tako sem vse krivulje lahko prikazal na enem grafu in tako lažje opazoval, v kakšnem odnosu so spremenljivke ena do druge.
+
+
 % \includegraphics{../slike/naselja.pdf}
+
+\newline
+V tretjem delu te zadnje faze sem se lotil raziskati še eno vprašanje. Narisal sem dendogram in ugotavljal, kako se v skupine razvrstijo NBA ekipe. Najprej sem skonstruiral tabelo \verb|NBA2|,kjer so podatki za vse NBA ekipe,
+in kjer v stolpcih nastopajo le spremenljivke, kjer višja vrednost pomeni več oz. boljše (ni napak oz. izgubljenih žog, kjer več pomeni slabše).\\
+
+Nato sem s funkcijo \verb|scale| normaliziral podatke in narisal dendogram.
+Klube sem s funkcijo \verb|rect.hclust| razdelil v 3 skupine. Prav tako sem dendogramu dodal legendo.\\
+
+\makebox[\textwidth][c]{
+\includegraphics{../slike/hierarhija1.pdf}
+}
+
+Skupina 1 predstavlja najslabše klube v ligi, skupina 3 pa najboljše.
+Nato sem narisal še en dendogram, ki nazorno prikazuje, katere ekipe so porabile največ in katere najmanj za plače. V grobem je moč potrditi tezo, da so klubi z več denarja, dražjimi igralci konkurenčnejši od tistih z manj znanimi imeni.\\
+
+\makebox[\textwidth][c]{
+\includegraphics{../slike/hierarhija2.pdf}
+}
+
+http://sportslistoftheday.com/2013/12/15/nba-2013-14-team-payrolls-and-salary-cap-hits/
+\begin{itemize}
+  \item 
+
+\end{itemize}
 
 \end{document}
