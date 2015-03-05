@@ -74,7 +74,7 @@ curve(napoved(x, kvadratna), add = TRUE, lwd = 1.5, col = "red")
 
 #Narišemo še legendo
 
-legend(2004, 65, c("Linearna (lm(pop ~ leto))", "Kvadratna (lm(pop ~ I(leto^2) + leto))",
+legend(2004, 65, c("Linearna (lm(ply ~ leto))", "Kvadratna (lm(ply ~ I(leto^2) + leto))",
                     "120 tujcev"),
        lty=c(1,1), col = c("blue","red", "black"))
 
