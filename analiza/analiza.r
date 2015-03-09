@@ -107,7 +107,7 @@ pdf("slike/hierarhija1.pdf")
 X <- scale(as.matrix(NBA2))
 t <- hclust(dist(X), method = "ward.D")
 
-plot(t, hang=-1, cex=0.4, main = "Delitev ekip v skupine glede na športno uspešnost", ylab = "Višina")
+plot(t, hang=-1, cex=0.4, main = "Delitev ekip v skupine glede na športno uspešnost")
 
 legend("topright", 
        c("Skupina 1", "Skupina 2","Skupina 3"),
@@ -167,7 +167,7 @@ dev.off()
 
 pdf("slike/dendogram2.pdf")
 
-plot(e1, hang=-1, cex=0.4, main = "Razdelitev igralcev v skupine glede na kvaliteto", ylab = "Višina")
+plot(e1, hang=-1, cex=0.4, main = "Razdelitev igralcev v skupine glede na kvaliteto")
 rect.hclust(e1,k=3,border=c("red","blue","green"))
 legend("topright", 
        c("Skupina 1", "Skupina 2","Skupina 3"),
