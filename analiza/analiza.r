@@ -82,15 +82,16 @@ dev.off()
 
 
 pdf("slike/analiza.pdf")
-
-plot(ANA1$YEAR, ANA1$W, type = "l", col = "red", lwd = 3.6, xlab = "Leto", ylab = "Zmage",
+normaliziranje <- scale(ANA1[c(2,3,4,5,6)])
+normal <- data.frame(ANA1[1], normaliziranje)
+plot(normal$YEAR, normal$W, type = "l", col = "red", lwd = 3.6, xlab = "Leto", ylab = "Normalizirani podatki",
      main = "Podatki za ekipo Phoenix Suns - korelacija med spremenljivkami")
-lines(ANA1$YEAR, ANA1$REB, col = "blue")
-abline(h = ANA1$W, lty = "dotted", col = "grey")
-abline(v = ANA1$YEAR, lty = "dotted", col = "grey")
-lines(ANA1$YEAR, 2* ANA1$AST, col = "green")
-lines(ANA1$YEAR, 2* ANA1$TOV, col = "orange")
-lines(ANA1$YEAR, ANA1$PTS / 3, col = "cyan")
+lines(normal$YEAR, normal$REB, col = "blue")
+abline(h = normal$W, lty = "dotted", col = "grey")
+abline(v = normal$YEAR, lty = "dotted", col = "grey")
+lines(normal$YEAR, normal$AST, col = "green")
+lines(normal$YEAR, normal$TOV, col = "orange")
+lines(normal$YEAR, normal$PTS, col = "cyan")
 legend("topright",
        legend=c("Zmage", "Skoki", "Asistence", "Napake","Točke"),
        col=c("red","blue","green","orange","cyan"),
@@ -106,7 +107,7 @@ pdf("slike/hierarhija1.pdf")
 X <- scale(as.matrix(NBA2))
 t <- hclust(dist(X), method = "ward.D")
 
-plot(t, hang=-1, cex=0.4, main = "Delitev ekip v skupine glede na športno uspešnost")
+plot(t, hang=-1, cex=0.4, main = "Delitev ekip v skupine glede na športno uspešnost", ylab = "Višina")
 
 legend("topright", 
        c("Skupina 1", "Skupina 2","Skupina 3"),
@@ -162,8 +163,11 @@ XX <- scale(as.matrix(phoenix[c(2,5,8,11:16,20,21)]))
 e1 <- hclust(dist(XX), method = "ward.D")
 p1 <- cutree(e1, k=3)
 pairs(XX, col = barve1[p1])
+dev.off()
 
-plot(e1, hang=-1, cex=0.4, main = "Razdelitev igralcev v skupine glede na kvaliteto")
+pdf("slike/dendogram2.pdf")
+
+plot(e1, hang=-1, cex=0.4, main = "Razdelitev igralcev v skupine glede na kvaliteto", ylab = "Višina")
 rect.hclust(e1,k=3,border=c("red","blue","green"))
 legend("topright", 
        c("Skupina 1", "Skupina 2","Skupina 3"),
